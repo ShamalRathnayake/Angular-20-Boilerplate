@@ -1,0 +1,15 @@
+import { z } from 'zod';
+
+export const EnvSchema = z.object({
+  NG_APP_API_URL: z.string().url(),
+  NG_APP_APP_NAME: z.string().min(1),
+  NG_APP_ENABLE_ANALYTICS: z.string().transform((val) => val === 'true'),
+});
+
+export type EnvConfig = z.infer<typeof EnvSchema>;
+
+export const envObject = {
+  NG_APP_API_URL: import.meta.env['NG_APP_API_URL'],
+  NG_APP_APP_NAME: import.meta.env['NG_APP_APP_NAME'],
+  NG_APP_ENABLE_ANALYTICS: import.meta.env['NG_APP_ENABLE_ANALYTICS'],
+};
