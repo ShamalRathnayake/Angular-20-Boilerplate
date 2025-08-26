@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { EnvService } from '../envService/env.service';
 
 export enum LogLevel {
@@ -12,13 +12,14 @@ export enum LogLevel {
   providedIn: 'root',
 })
 export class LoggerService {
+  private envService = inject(EnvService);
   private isDevelopment: boolean;
 
-  constructor(private EnvService: EnvService) {
-    this.isDevelopment = this.EnvService.isDevelopment === 'development';
+  constructor() {
+    this.isDevelopment = this.envService.isDevelopment === 'development';
   }
 
-  private format(level: LogLevel, message: any, ...optionalParams: any[]) {
+  private format(level: LogLevel, message: string, ...optionalParams: unknown[]) {
     const time = new Date().toISOString();
     let color: string;
 
@@ -42,20 +43,20 @@ export class LoggerService {
     return [`%c[${level}] [${time}] - ${message}`, color, ...optionalParams];
   }
 
-  debug(message: any, ...optionalParams: any[]) {
+  debug(message: string, ...optionalParams: unknown[]) {
     if (this.isDevelopment)
       console.debug(...this.format(LogLevel.DEBUG, message, ...optionalParams));
   }
 
-  info(message: any, ...optionalParams: any[]) {
+  info(message: string, ...optionalParams: unknown[]) {
     if (this.isDevelopment) console.info(...this.format(LogLevel.INFO, message, ...optionalParams));
   }
 
-  warn(message: any, ...optionalParams: any[]) {
+  warn(message: string, ...optionalParams: unknown[]) {
     if (this.isDevelopment) console.warn(...this.format(LogLevel.WARN, message, ...optionalParams));
   }
 
-  error(message: any, ...optionalParams: any[]) {
+  error(message: string, ...optionalParams: unknown[]) {
     if (this.isDevelopment)
       console.error(...this.format(LogLevel.ERROR, message, ...optionalParams));
   }

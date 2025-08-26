@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Define the type of the environment variables.
 declare interface Env {
   readonly NODE_ENV: string;

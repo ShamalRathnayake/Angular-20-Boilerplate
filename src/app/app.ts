@@ -1,7 +1,6 @@
-import { Component, signal, WritableSignal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { EnvService } from './core/services/envService/env.service';
-import { LoggerService } from './core/services/loggerService/logger.service';
+import { EnvService } from '@services/envService/env.service';
 
 @Component({
   selector: 'app-root',
@@ -10,8 +9,9 @@ import { LoggerService } from './core/services/loggerService/logger.service';
   styleUrl: './app.css',
 })
 export class App {
+  private envService = inject(EnvService);
   protected readonly title: WritableSignal<string>;
-  constructor(private EnvService: EnvService) {
-    this.title = signal(`${this.EnvService.appName} - ${this.EnvService.isDevelopment}`);
+  constructor() {
+    this.title = signal(`${this.envService.appName} - ${this.envService.isDevelopment}`);
   }
 }
