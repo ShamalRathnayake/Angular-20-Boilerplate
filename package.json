@@ -4,10 +4,13 @@
   "author": {
     "name": "Shamal Rathnayake"
   },
+  "type": "module",
   "scripts": {
     "ng": "ng",
-    "start": "NODE_ENV=development ng serve",
-    "build": "NODE_ENV=production ng build",
+    "start": "cross-env NODE_ENV=development ng serve",
+    "prestart": "cross-env NODE_ENV=development node ./validate-env.mjs",
+    "build": "cross-env NODE_ENV=production ng build",
+    "prebuild": "cross-env NODE_ENV=production node ./validate-env.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "eslint --fix",
@@ -52,6 +55,7 @@
     "@types/node": "^24.3.0",
     "angular-eslint": "20.2.0",
     "commitizen": "^4.3.1",
+    "cross-env": "^10.0.0",
     "cz-conventional-changelog": "^3.3.0",
     "dotenv": "^17.2.1",
     "eslint": "^9.33.0",

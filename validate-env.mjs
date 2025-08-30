@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 import { EnvSchema } from './src/app/core/config/envConfig/env.schema.ts';
-
-dotenv.config({ path: `./src/environments/.env.production` });
+dotenv.config({
+  path: process.env['NODE_ENV'] === 'development' ? './.env.development' : './.env.production',
+});
 
 const parsed = EnvSchema.safeParse(process.env);
 
