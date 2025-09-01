@@ -1,2 +1,57 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'tailwindcss';
+@import 'ngx-toastr/toastr';
+
+#toast-container > div {
+  border-radius: 12px !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
+  padding: 14px 18px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.4 !important;
+}
+
+#toast-container .toast-title {
+  font-weight: 600 !important;
+  font-size: 16px !important;
+  margin-bottom: 4px !important;
+}
+
+#toast-container .toast-message {
+  opacity: 0.9 !important;
+}
+
+#toast-container .toast-close-button {
+  color: rgba(0, 0, 0, 0.5) !important;
+  font-size: 18px !important;
+  opacity: 0.7 !important;
+  top: 8px !important;
+  right: 12px !important;
+  transition: opacity 0.2s ease-in-out;
+}
+#toast-container .toast-close-button:hover {
+  opacity: 1 !important;
+}
+
+.toast-success {
+  background: linear-gradient(135deg, #4caf50, #2e7d32) !important;
+  color: #fff !important;
+}
+.toast-error {
+  background: linear-gradient(135deg, #f44336, #b71c1c) !important;
+  color: #fff !important;
+}
+.toast-info {
+  background: linear-gradient(135deg, #2196f3, #1565c0) !important;
+  color: #fff !important;
+}
+.toast-warning {
+  background: linear-gradient(135deg, #ff9800, #e65100) !important;
+  color: #fff !important;
+}
+
+.toast-progress {
+  height: 4px !important;
+  border-radius: 0 0 12px 12px !important;
+  background: rgba(255, 255, 255, 0.7) !important;
+}

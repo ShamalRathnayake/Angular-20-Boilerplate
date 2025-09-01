@@ -16,7 +16,7 @@ export class LoggerService {
   private isDevelopment: boolean;
 
   constructor() {
-    this.isDevelopment = this.envService.isDevelopment === 'development';
+    this.isDevelopment = this.envService.isDevelopment;
   }
 
   private format(level: LogLevel, message: string, ...optionalParams: unknown[]) {

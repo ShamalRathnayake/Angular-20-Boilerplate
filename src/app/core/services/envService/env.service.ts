@@ -20,7 +20,7 @@ export class EnvService {
     return this.envConfig.NG_APP_ENABLE_ANALYTICS;
   }
 
-  get isDevelopment(): string {
-    return import.meta.env.NODE_ENV;
+  get isDevelopment(): boolean {
+    return import.meta.env.NODE_ENV === 'development';
   }
 }
