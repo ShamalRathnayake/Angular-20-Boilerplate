@@ -23,4 +23,8 @@ export class EnvService {
   get isDevelopment(): boolean {
     return import.meta.env.NODE_ENV === 'development';
   }
+
+  get storageKey(): string {
+    return this.envConfig.NG_APP_STORAGE_KEY;
+  }
 }
